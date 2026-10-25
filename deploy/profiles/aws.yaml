@@ -1,0 +1,8 @@
+# EKS: GPU managed node group, secrets from the cloud secrets manager via External Secrets.
+target: aws
+gateway: { closedKeySecret: p360-closed-model }
+inference:
+  engine: vllm
+  vllm:
+    nodeSelector: { p360/gpu: "true" }
+    tolerations: [{ key: nvidia.com/gpu, operator: Exists, effect: NoSchedule }]

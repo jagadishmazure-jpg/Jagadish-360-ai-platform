@@ -1,0 +1,72 @@
+{
+ "repo": "https://github.com/jagadishmazure-jpg/Jagadish-360-ai-platform",
+ "schema": "agent-card/v1",
+ "agents": [
+  {
+   "name": "model-gateway",
+   "title": "Model gateway (closed + open)",
+   "level": "Advanced",
+   "tech": "Python stdlib, OpenAI-compatible API",
+   "industry": "Cross-industry",
+   "tags": [
+    "routing",
+    "privacy",
+    "cost"
+   ],
+   "summary": "One API that routes between self-hosted open models and closed models by privacy, confidence and budget.",
+   "guardrails": [
+    "PII redaction in and out",
+    "injection screen",
+    "per-tenant budgets",
+    "circuit breaker",
+    "hash-chained audit"
+   ],
+   "run": "p360 demo",
+   "page": "https://github.com/jagadishmazure-jpg/Jagadish-360-ai-platform#readme",
+   "data": "synthetic",
+   "tests": 105
+  },
+  {
+   "name": "expert-loop",
+   "title": "Domain expert feedback loop",
+   "level": "Advanced",
+   "tech": "Preference pairs + reranker on a local open model",
+   "industry": "Retail, Healthcare, Finance",
+   "tags": [
+    "rlhf-lite",
+    "guardrails",
+    "domain-experts"
+   ],
+   "summary": "Experts write rules and review answers; their corrections become preference pairs that train a reranker.",
+   "guardrails": [
+    "expert rules as output guard",
+    "reasons required on fix/reject",
+    "reviews redacted before storage"
+   ],
+   "run": "p360 expert-loop",
+   "page": "https://github.com/jagadishmazure-jpg/Jagadish-360-ai-platform#readme",
+   "data": "synthetic",
+   "tests": 105
+  },
+  {
+   "name": "breakeven",
+   "title": "Self-hosting break-even calculator",
+   "level": "Beginner",
+   "tech": "Python",
+   "industry": "Small business",
+   "tags": [
+    "finops",
+    "on-prem",
+    "gpu"
+   ],
+   "summary": "Compares a one-time inference server with monthly per-token spend and finds the payback month.",
+   "guardrails": [
+    "every assumption sourced and labelled estimated"
+   ],
+   "run": "p360 breakeven",
+   "page": "https://github.com/jagadishmazure-jpg/Jagadish-360-ai-platform#readme",
+   "data": "synthetic",
+   "tests": 105
+  }
+ ]
+}

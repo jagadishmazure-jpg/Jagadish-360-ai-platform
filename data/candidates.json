@@ -1,0 +1,2711 @@
+{
+ "generator": {
+  "model": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+  "runtime": "llama.cpp on CPU",
+  "samples": 4,
+  "max_tokens": 80,
+  "seconds": 260.2
+ },
+ "items": [
+  {
+   "id": "retail-000",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought bath towels 45 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "45 days is outside the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO\nThe item is unopened and has the receipt, but it is within the 30-day window, which means the customer cannot return it.",
+    "YES, based on the expert policy checker, the customer can return the item within the 30-day window, as the item is unopened and the receipt is present.",
+    "YES, the customer can return the item within the 30-day window since it's unopened and the receipt is present.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-001",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a lamp 21 days ago. The item is opened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "21 days is within the 30-day window; item is opened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the item as they have no receipt, but the policy states a receipt is required.",
+    "YES, according to the expert policy checker, the customer can return the item within the 30-day window, as it is open and no receipt is required.",
+    "YES, the customer can return the lamp within the 30-day window due to both the opening of the item and the lack of a receipt.",
+    "YES."
+   ]
+  },
+  {
+   "id": "retail-002",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought a lamp 71 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "71 days is outside the 60-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "NO",
+    "YES, according to the expert policy checker, the customer can return the item within the 60-day window, as the lamp is unopened and the receipt is present.",
+    "YES, the customer can return the lamp within the 60-day window since the receipt is present and the item is unopened.",
+    "Yes, according to the expert policy checker, the customer can return the lamp because it is unopened and the store policy allows for returns within 60 days of purchase with a receipt."
+   ]
+  },
+  {
+   "id": "retail-003",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought headphones 24 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "24 days is within the 30-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones according to the store policy.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 30-day window, as they have the receipt to prove the item was returned.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-004",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a desk chair 4 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "4 days is within the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the item according to the store policy.",
+    "YES, according to the expert policy checker, the customer can return the item within the 14-day window, as it is unopened and the receipt is present.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-005",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a lamp 24 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "24 days is outside the 14-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the item cannot be returned as the customer has not returned it due to the opening status and receipt being present.",
+    "YES, according to the expert policy checker, the customer can return the item within the 14-day window, as the item is opened and the receipt is present.",
+    "YES, the customer can return the lamp within the 14-day window based on the expert policy checker's assessment.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-006",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a blender 48 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "48 days is outside the 30-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "NO",
+    "YES, according to the expert policy checker, the customer cannot return the item because it is unopened and the receipt is missing.",
+    "YES, the customer can return the blender. The policy checker has correctly identified the timeframe for returns, which is 30 days from the purchase date, and the absence of a receipt as a reason for return.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-007",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a blender 5 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "5 days is within the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the blender according to the store policy.",
+    "YES, according to the expert policy checker, the customer can return the blender within the 14-day window with a valid receipt.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-008",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a desk chair 28 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "28 days is outside the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the item since the policy is for items that were purchased within 14 days and have no receipt, and the customer has a receipt.",
+    "YES, according to the expert policy checker, the customer can return the desk chair.",
+    "YES, the customer can return the item within the 14-day window since they purchased it 28 days ago, which is within the allowed timeframe.",
+    "Yes, according to the expert policy checker, the customer can return the item."
+   ]
+  },
+  {
+   "id": "retail-009",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought headphones 5 days ago. The item is opened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "5 days is within the 14-day window; item is opened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "Yes, the customer can return the headphones due to the expired 14-day window and missing a receipt.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 14-day window, as they have a valid receipt but the item is now open and there is no required receipt.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-010",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a desk chair 49 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "49 days is outside the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the item since the policy is for items that were purchased within 30 days and have been opened or have not received a receipt.",
+    "YES, based on the expert policy checker's findings, the customer can return the desk chair within their 30-day window, as the item is unopened and a receipt is available.",
+    "YES, the customer can return the item within the 30-day window since it meets all the criteria for a return as outlined by the policy checker.",
+    "Yes, according to the expert policy checker's analysis, the customer can return the item within the 30-day window with a valid receipt, since it was unopened and the policy allows for returns within that timeframe."
+   ]
+  },
+  {
+   "id": "retail-011",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a desk chair 26 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "26 days is within the 30-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the desk chair since it is open and the policy allows for return within the specified window.",
+    "YES, according to the expert policy checker, the customer can return the desk chair.",
+    "YES.",
+    "Yes"
+   ]
+  },
+  {
+   "id": "retail-012",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought headphones 50 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "50 days is within the 60-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones as per the store policy.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 60-day window, as they are unopened and the receipt is present.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-013",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought a blender 72 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "72 days is outside the 60-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "NO",
+    "YES, according to the expert policy checker, the customer cannot return the item because it is unopened and the receipt is missing.",
+    "YES, the customer can return the item. The policy checker has correctly identified the condition as unopened and the absence of a receipt as an obstacle to returning the item.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-014",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought bath towels 56 days ago. The item is opened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "56 days is within the 60-day window; item is opened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "Yes, the customer can return the item as they have no receipt, but the policy states a receipt is required.",
+    "YES, according to the expert policy checker, the customer can return the bath towels.",
+    "YES.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-015",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought headphones 22 days ago. The item is opened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "22 days is within the 30-day window; item is opened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones due to the expired 30-day window and lack of a receipt.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 30-day window, as they have a valid receipt but the item is now open and cannot be returned with a receipt.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-016",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought bath towels 58 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "58 days is within the 60-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes",
+    "YES, according to the expert policy checker, the customer can return the bath towel within the 60-day window, as it is opened and the receipt is present.",
+    "YES.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-017",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a desk chair 26 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "26 days is outside the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the item since the policy states that items must be unopened for a 14-day window, and the item is unopened.",
+    "YES, according to the expert policy checker, the customer can return the desk chair.",
+    "YES, the customer can return the item within the 14-day window since they meet all the criteria mentioned in the expert policy checker's analysis.",
+    "Yes, according to the expert policy checker's explanation, the customer can return the item within the 14-day window with a receipt, as stated."
+   ]
+  },
+  {
+   "id": "retail-018",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought bath towels 37 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "37 days is outside the 30-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "NO",
+    "YES, based on the expert policy checker's evaluation, the customer can return the bath towels within their 30-day window with a receipt, as they are unopened and have been purchased 37 days ago.",
+    "YES, the customer can return the item. The policy checker has correctly identified the items, the timeframe, and the missing receipt.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-019",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a blender 31 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "31 days is outside the 30-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the item cannot be returned due to exceeding the 30-day policy window. The customer must first obtain a receipt.",
+    "YES, they can return the item.",
+    "YES, the customer can return the blender. The policy checker has correctly identified the item was opened and the receipt is present, thus allowing a return within the 30-day window.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-020",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a lamp 9 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "9 days is within the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the lamp.",
+    "YES, according to the expert policy checker, the customer can return the lamp within the 14-day window, as it is unopened and the receipt is present.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-021",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought a lamp 76 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "76 days is outside the 60-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "NO, the customer cannot return the lamp as per the expert policy checker's ruling.",
+    "YES, according to the expert policy checker, the customer can return the item within the 60-day window, as it is unopened and the receipt is present.",
+    "YES, the customer can return the lamp within the 60-day window since the receipt is present and the item is unopened.",
+    "Yes, according to the expert policy checker, the customer can return the lamp."
+   ]
+  },
+  {
+   "id": "retail-022",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought headphones 24 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "24 days is within the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones, and they can do so within the 30-day window based on the policy checker's information.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 30-day window, as they are unopened and the receipt is present.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-023",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought bath towels 79 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "79 days is outside the 60-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the item cannot be returned due to exceeding the 60-day return window. The customer needs to provide a receipt.",
+    "YES, according to the expert policy checker, the customer can return the bath towel within the 60-day window, as the item is open and the receipt is present.",
+    "YES, the customer can return the item because the policy allows for returns within 60 days, and they have the receipt, which supports the return request.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-024",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought headphones 25 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "25 days is within the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones, and they can do so with a valid receipt within the 30-day window.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 30-day window, as they are unopened and the receipt is present.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-025",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a desk chair 10 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "10 days is within the 14-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "Yes",
+    "YES, according to the expert policy checker, the customer can return the item within the 14-day window, as it is unopened and the receipt is missing.",
+    "YES, the customer can return the desk chair because it is unopened and no receipt was provided.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-026",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought bath towels 25 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "25 days is outside the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the item since the policy is for items that were purchased within 14 days and have been opened or unopened.",
+    "YES, based on the expert rules, the customer can return the bath towel within the 14-day window, as the policy states the item is unopened and a receipt is available.",
+    "YES, the customer can return the item within the 14-day window since they purchased it 25 days ago, the item is unopened, and the receipt is present.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-027",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought a blender 50 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "50 days is within the 60-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "Yes, the customer can return the blender as per the store policy.",
+    "YES, based on the expert rules, the customer can return the blender.",
+    "YES, the customer can return the blender within the 60-day window due to both the item's condition (unopened) and the absence of a receipt.",
+    "YES."
+   ]
+  },
+  {
+   "id": "retail-028",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a desk chair 12 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "12 days is within the 14-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes",
+    "YES, they can return the item.",
+    "YES, the customer can return the item within the 14-day window since they provided the receipt.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-029",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a blender 39 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "39 days is outside the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the blender due to the 39-day expiration.",
+    "YES, according to the expert policy checker, the customer can return the item within the 30-day window, as the blender is unopened and the receipt is present.",
+    "YES, the customer can return the blender within the 30-day window because the items are unopened and the receipt is present.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-030",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought headphones 21 days ago. The item is opened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "21 days is within the 30-day window; item is opened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 30-day window, as they have a valid receipt but the item is now open and they need a new one.",
+    "YES, the customer can return the headphones. The policy checker has correctly identified the circumstances of the situation, and the policy is still in force within the 30-day window.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-031",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought headphones 21 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "21 days is within the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones, and they can do so within the 30-day window as per the provided store policy.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 30-day window, as they are unopened and the receipt is present.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-032",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought bath towels 67 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "67 days is outside the 60-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the item since the policy is for items that were purchased within the last 60 days. The receipt is required to validate the return.",
+    "YES, based on the expert policy checker's evaluation, the customer can return the bath towels within their 60-day window with the receipt.",
+    "YES, the customer can return the item within the 60-day window since they were unopened and have the receipt.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-033",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought a desk chair 55 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "55 days is within the 60-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "Yes",
+    "YES, based on the expert rules, the customer can return the desk chair within the 60-day window, as it is unopened and the receipt is missing.",
+    "YES, the customer can return the item. The policy checker has correctly identified the key conditions: the item is unopened, and the customer has a receipt, but the 60-day window has passed without the receipt being returned.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-034",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought headphones 52 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "52 days is within the 60-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones since the 60-day window criterion is met and they have not received a receipt, thus allowing for the return.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 60-day window, as they are unopened and the receipt is missing.",
+    "YES",
+    "YES."
+   ]
+  },
+  {
+   "id": "retail-035",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a lamp 34 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "34 days is outside the 30-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "NO",
+    "YES, according to the expert policy checker, the customer cannot return the item because it is unopened and the policy states that it is valid for 30 days after purchase. There is no requirement for a receipt.",
+    "YES, the customer can return the lamp. The policy checker has correctly identified the items and the required conditions.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-036",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a lamp 45 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "45 days is outside the 30-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "NO",
+    "YES, according to the expert policy checker, the customer can return the item because it is unopened and the policy states that items purchased 45 days ago are within the 30-day window.",
+    "YES, the customer can return the lamp within the 30-day window since the items are unopened and the receipt is missing.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-037",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a lamp 29 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "29 days is within the 30-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the lamp since the policy allows for an extension due to the open nature of the item and receipt availability.",
+    "YES, according to the expert policy checker, the customer can return the item within the 30-day window, as the item is opened and the receipt is present.",
+    "YES.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-038",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought headphones 43 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "43 days is outside the 30-day window; item is opened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the item since the 30-day window is not within the time frame from the purchase date.",
+    "YES, according to the expert policy checker, the customer can return the item because it is open, and they have the receipt.",
+    "YES, the customer can return the headphones.",
+    "Yes, according to the expert policy checker, the customer can return the headphones, as they meet all the criteria."
+   ]
+  },
+  {
+   "id": "retail-039",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought headphones 52 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "52 days is within the 60-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones with a valid receipt.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 60-day window, as they have the receipt to prove they have made a purchase.",
+    "YES.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-040",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought a blender 56 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "56 days is within the 60-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "Yes, the customer can return the blender as per the store policy.",
+    "YES, according to the expert policy checker, the customer can return the item within the 60-day window, as it is unopened and the receipt is missing.",
+    "YES, the customer can return the blender within the 60-day window based on the expert policy checker's assessment.",
+    "YES."
+   ]
+  },
+  {
+   "id": "retail-041",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a lamp 26 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "26 days is outside the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the lamp as per the expert policy checker's check.",
+    "YES, according to the expert policy checker, the customer can return the item within the 14-day window, as the lamp is unopened and the receipt is present.",
+    "YES, the customer can return the lamp within the 14-day window because the items are unopened and the receipt is present.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-042",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought bath towels 10 days ago. The item is opened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "10 days is within the 14-day window; item is opened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes",
+    "YES, according to the expert policy checker, the customer can return the bath towels.",
+    "YES, the customer can return the item. The policy states that items opened and within one year of purchase can be returned, but since it's a 10-day window, they are eligible to return it.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-043",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought a blender 77 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "77 days is outside the 60-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the item cannot be returned due to being opened and having a receipt.",
+    "YES, they can return the item.",
+    "YES, the customer can return the item.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-044",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought headphones 4 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "4 days is within the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones, and they can do so within the 14-day window as per the policy.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 14-day window, as they have the receipt to prove the item is unopened.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-045",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a desk chair 25 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "25 days is within the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the item according to the store policy.",
+    "YES, based on the expert rules and the provided policy checker, the customer can return the desk chair within the 30-day window, and they have the receipt, as they met all the requirements.",
+    "YES, the customer can return the desk chair within the 30-day window with a valid receipt.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-046",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought headphones 23 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "23 days is within the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the headphones, and they can do so within the 30-day window as per the provided store policy.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 30-day window, as they have the receipt to prove the item is unopened.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-047",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a lamp 23 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "23 days is outside the 14-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "NO, the item cannot be returned as the customer has not returned it yet, and the store's policy states that it must be returned within 14 days.",
+    "YES, according to the expert policy checker, the customer can return the item within the 14-day window, as the lamp is opened and the receipt is present.",
+    "YES, the customer can return the lamp within the 14-day window based on the expert policy checker's guidance.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-048",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a lamp 29 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "29 days is outside the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the lamp as per the expert policy checker's check.",
+    "YES, according to the expert policy checker, the customer can return the item within the 14-day window, as the lamp is unopened and the receipt is present.",
+    "YES, the customer can return the lamp within the 14-day window since the items are unopened and the receipt is present.",
+    "Yes, according to the expert policy checker. The customer can return the lamp, and they will have to provide the receipt."
+   ]
+  },
+  {
+   "id": "retail-049",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought headphones 44 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "44 days is outside the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the headphones due to the 30-day rule and the fact that the item is unopened and a receipt is present.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 30-day window, as they meet all the criteria: they are unopened and a customer has the receipt.",
+    "YES, the customer can return the headphones.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-050",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a desk chair 6 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "6 days is within the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the item as per the store policy.",
+    "YES, according to the expert policy checker, the customer can return the item within the 14-day window, as it is unopened and the receipt is present.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-051",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought bath towels 6 days ago. The item is unopened. Customer has no receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "6 days is within the 14-day window; item is unopened; receipt missing.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the bath towel, as the policy allows for 14 days, the 6 days passed has elapsed, and there is no receipt required.",
+    "YES, based on the expert rules, the customer can return the bath towel.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-052",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a blender 21 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "21 days is within the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the blender, and they have the receipt.",
+    "YES, based on the expert rules and the provided policy checker, the customer can return the blender as per the policy.",
+    "YES, the customer can return the blender within the 30-day window as it was unopened and has the receipt.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-053",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a blender 5 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "5 days is within the 14-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the blender because the policy allows for a 5-day return after purchasing it 5 days ago with a receipt.",
+    "YES, according to the expert policy checker, the customer can return the item within the 14-day window, as it is open and the receipt is present.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-054",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 30 days of purchase with a receipt. A customer bought a desk chair 38 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "38 days is outside the 30-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES.",
+   "rules_samples": [
+    "NO, the customer cannot return the item since the policy is for items opened and requires a receipt, and the item is not opened.",
+    "YES, they can return the item.",
+    "YES, the customer can return the item within the 30-day window since they purchased it 38 days ago, it is unopened, and they have the receipt.",
+    "Yes, according to the expert policy checker, the customer can return the item."
+   ]
+  },
+  {
+   "id": "retail-055",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought headphones 76 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "76 days is outside the 60-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the headphones due to the expired 60-day window.",
+    "YES, according to the expert policy checker, the customer can return the headphones within the 60-day window, as they are unopened and the receipt is present.",
+    "YES, the customer can return the headphones within the 60-day window because the items are unopened and the receipt is present.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-056",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought bath towels 67 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "67 days is outside the 60-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "NO, the customer cannot return the item since the policy is for items that were purchased within the last 60 days. The receipt is required to validate the return.",
+    "YES, based on the expert policy checker's evaluation, the customer can return the bath towels within their 60-day window with the receipt.",
+    "YES, the customer can return the item within the 60-day window since they were unopened and have the receipt.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-057",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 14 days of purchase with a receipt. A customer bought a blender 5 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "5 days is within the 14-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the blender according to the store policy.",
+    "YES, according to the expert policy checker, the customer can return the blender within the 14-day window with a valid receipt.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "retail-058",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought bath towels 54 days ago. The item is opened. Customer has the receipt. Can they return it?",
+   "expected": "NO",
+   "facts": "54 days is within the 60-day window; item is opened; receipt present.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the bath towels because they are within the 60-day return window, the item is opened, and they have the receipt.",
+    "YES, based on the expert rules, the customer can return the item as per the policy checker.",
+    "YES.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "retail-059",
+   "domain": "retail",
+   "prompt": "Store policy: unopened items can be returned within 60 days of purchase with a receipt. A customer bought a desk chair 54 days ago. The item is unopened. Customer has the receipt. Can they return it?",
+   "expected": "YES",
+   "facts": "54 days is within the 60-day window; item is unopened; receipt present.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "Yes, the customer can return the item, as it falls within the 60-day policy window with a valid receipt.",
+    "YES, according to the expert policy checker, the customer can return the item within the 60-day window, as it is unopened and the receipt is present.",
+    "YES, the customer can return the item within the 60-day window as per the store policy.",
+    "Yes."
+   ]
+  },
+  {
+   "id": "healthcare-000",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a X-ray that costs $1027. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "X-ray is not on the always-authorize list; $1027 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe X-ray is not on the always-authorize list, and it costs more than the $1000 threshold. Therefore, prior authorization is required for this X-ray.",
+    "YES\nA $1027 X-ray does not qualify for prior authorization under the clinic's policy, as it exceeds the $1000 limit.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-001",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a MRI that costs $496. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "MRI is on the always-authorize list; $496 is not above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-002",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a MRI that costs $1142. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "MRI is on the always-authorize list; $1142 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-003",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a ultrasound that costs $1427. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "ultrasound is not on the always-authorize list; $1427 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-004",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a CT scan that costs $1906. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $1906 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-005",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a blood panel that costs $2208. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $2208 is above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-006",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a CT scan that costs $2348. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $2348 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-007",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a CT scan that costs $456. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $456 is not above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-008",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a blood panel that costs $2094. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $2094 is above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker is correct. According to the clinic policy, a $2094 blood panel is not authorized prior to $1500, and since the cost is above the limit, prior authorization is not required for this procedure.",
+    "YES\nExplanation: The patient's blood panel cost is above the $1500 limit specified in the clinic policy, making prior authorization required.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-009",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a CT scan that costs $1799. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $1799 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-010",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a blood panel that costs $2434. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $2434 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES, prior authorization is required for the blood panel.",
+    "YES, prior authorization is required for the blood panel since it costs more than $500 but is not on the always-authorize list.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-011",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a CT scan that costs $463. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $463 is not above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-012",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a CT scan that costs $445. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $445 is not above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-013",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a CT scan that costs $1233. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $1233 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-014",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a MRI that costs $1246. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "MRI is on the always-authorize list; $1246 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe MRI is on the always-authorize list, and $1246 is not above the $1500 limit, so prior authorization is required.",
+    "YES\nExplanation: The expert rules specify that prior authorization is required for any MRI or CT scan that costs more than $1500, and the patient has requested an MRI, which falls under this category. Therefore, based on the expert rules, the prior authorization requirement applies.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-015",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a ultrasound that costs $979. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "ultrasound is not on the always-authorize list; $979 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker is correct. Since the ultrasound costs $979, which falls below the $1500 threshold, prior authorization is not required for this procedure.",
+    "YES\nA patient booking an ultrasound that costs $979 is not required to have prior authorization, as it falls within the $1500 limit, which is within the policy checker's list.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-016",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a blood panel that costs $1489. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $1489 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-017",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a physical therapy visit that costs $2053. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "physical therapy visit is not on the always-authorize list; $2053 is above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe patient's physical therapy visit of $2053 is above the $1500 limit, and according to the clinic policy, prior authorization is required for MRI or CT scans and procedures costing more than $1500. Therefore, prior authorization is not required for this specific physical therapy visit.",
+    "YES\nA physical therapy visit with a cost of $2053 is not on the always-authorize list and falls within the $1500 limit. Therefore, a prior authorization check is required to ensure the therapy visit is covered.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-018",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a physical therapy visit that costs $424. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "physical therapy visit is not on the always-authorize list; $424 is not above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe patient's physical therapy visit for $424 is not subject to prior authorization since it is not on the always-authorize list and it is not above the $1000 limit.",
+    "YES\nPhysical therapy visit is not on the always-authorize list; $424 is not above the $1000 limit.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-019",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a X-ray that costs $2478. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "X-ray is not on the always-authorize list; $2478 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe X-ray is not on the always-authorize list, and it costs more than the $1000 threshold. Therefore, prior authorization is required for this X-ray.",
+    "YES\nA patient booking a X-ray that costs $2478 is not required to get prior authorization, as the policy checker's criteria do not apply to X-rays. However, it is still advisable for the patient to check with their healthcare provider regarding their specific situation and to understand what additional information may be necessary for a full policy review.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-020",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a ultrasound that costs $424. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "ultrasound is not on the always-authorize list; $424 is not above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES, prior authorization is required for the ultrasound procedure costing $424, as it is above the $500 limit, and the policy checker correctly identifies it as not on the always-authorize list.",
+    "YES, ultrasound is not on the always-authorize list, and $424 is not above the $500 limit.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-021",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a ultrasound that costs $604. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "ultrasound is not on the always-authorize list; $604 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-022",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a ultrasound that costs $1818. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "ultrasound is not on the always-authorize list; $1818 is above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-023",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a CT scan that costs $210. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $210 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-024",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a ultrasound that costs $1699. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "ultrasound is not on the always-authorize list; $1699 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-025",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a physical therapy visit that costs $259. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "physical therapy visit is not on the always-authorize list; $259 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe clinic policy does not require prior authorization for physical therapy visits, and the patient has not mentioned chest pain, which would prompt a review by a doctor to determine if the patient should be referred to a specialist or if further diagnostic measures are needed.",
+    "YES\nA physical therapy visit costing $259 is not on the always-authorize list for MRI or CT scans, nor is it above the $1500 limit for any procedure, so prior authorization is not required for this visit.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-026",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a physical therapy visit that costs $814. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "physical therapy visit is not on the always-authorize list; $814 is not above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe clinic policy does not require prior authorization for physical therapy visits, but the physical therapy visit's cost of $814 is above the $1000 limit.",
+    "YES\nPhysical therapy visit is not on the always-authorize list; $814 is not above the $1000 limit.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-027",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a CT scan that costs $994. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $994 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-028",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a blood panel that costs $1748. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $1748 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker is correct. For the blood panel costing $1748, prior authorization is not required based on the clinic policy, which only requires MRI or CT scans and procedures costing more than $500. However, it is not within the policy scope of any procedure costing more than $500.",
+    "YES\nExplanation: The patient's blood panel cost is above the $500 threshold, indicating that prior authorization is not required for this procedure.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-029",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a X-ray that costs $1428. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "X-ray is not on the always-authorize list; $1428 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-030",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a ultrasound that costs $2421. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "ultrasound is not on the always-authorize list; $2421 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-031",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a CT scan that costs $1540. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $1540 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-032",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a blood panel that costs $1720. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $1720 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-033",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a MRI that costs $1587. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "MRI is on the always-authorize list; $1587 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-034",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a MRI that costs $339. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "MRI is on the always-authorize list; $339 is not above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-035",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a ultrasound that costs $1814. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "ultrasound is not on the always-authorize list; $1814 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-036",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a ultrasound that costs $1184. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "ultrasound is not on the always-authorize list; $1184 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker is correct. An ultrasound costing $1184 is above the $1000 limit, which means prior authorization is required.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-037",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a physical therapy visit that costs $1646. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "physical therapy visit is not on the always-authorize list; $1646 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe patient's physical therapy visit for $1646 is within the allowed amount, as it does not fall into the \"always-authorize\" category for MRI or CT scans and is more than $500. Therefore, prior authorization is required for this visit.",
+    "YES\nExplanation: The physical therapy visit cost $1646 is above the $500 limit, so prior authorization is required for this MRI or CT scan and the therapy visit.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-038",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a physical therapy visit that costs $2060. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "physical therapy visit is not on the always-authorize list; $2060 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe patient's physical therapy visit does not meet the criteria for prior authorization as it costs more than $500 and the clinic policy states that MRI or CT scans and procedures costing more than $500 are required for authorization.",
+    "YES\nExplanation: The physical therapy visit, despite its cost, is not on the always-authorize list for MRI or CT scans or any procedure costing more than $500, making prior authorization required for both services.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-039",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a blood panel that costs $423. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "blood panel is not on the always-authorize list; $423 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker is correct. While blood panel costs $423, it falls within the $1500 limit, making it not on the always-authorize list. Therefore, prior authorization is required for this blood panel.",
+    "YES\nExplanation: The patient's blood panel is within the allowed scope of $423 for a procedure costing more than $1500, so prior authorization is not required.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-040",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a blood panel that costs $428. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "blood panel is not on the always-authorize list; $428 is not above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker is correct. Since the blood panel costs $428, it falls outside the $1000 limit, so prior authorization is not required.",
+    "YES\nExplanation: The patient's blood panel cost of $428 is within the $1000 limit, so prior authorization is not required.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-041",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a X-ray that costs $180. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "X-ray is not on the always-authorize list; $180 is not above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe X-ray is not on the always-authorize list, and the cost of $180 is not above the $1000 limit, so prior authorization is not required for this X-ray.",
+    "YES\nExplanation: The patient's X-ray is priced at $180, which falls under the $1000 limit set by the clinic policy. Prior authorization is only required for MRI or CT scans and procedures costing more than $1000. Since the X-ray's cost is not above that limit, it is not necessary for prior authorization.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-042",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a blood panel that costs $2012. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $2012 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker has identified the problem and provided the correct answer, with the patient mentioning chest pain today, which indicates a new requirement for prior authorization for the blood panel.",
+    "YES\nExplanation: The patient is booking a blood panel, which falls outside the usual authorization requirements of $1000 or more for MRI or CT scans, and is overcharging for a procedure costing $2012. Therefore, prior authorization is required for this appointment.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-043",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a blood panel that costs $920. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "blood panel is not on the always-authorize list; $920 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES, prior authorization is required for the blood panel.",
+    "YES, prior authorization is required for the blood panel as it is not on the always-authorize list and does not exceed the $1500 limit.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-044",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a ultrasound that costs $2376. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "ultrasound is not on the always-authorize list; $2376 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-045",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a CT scan that costs $1003. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $1003 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-046",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a X-ray that costs $2327. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "X-ray is not on the always-authorize list; $2327 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe X-ray is not on the always-authorize list, and its cost of $2327 is above the $500 limit, so prior authorization is not required.",
+    "YES\nA patient booking a X-ray that costs $2327 is not required to get prior authorization, as the policy checker correctly noted that $2327 is over the $500 threshold.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-047",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a blood panel that costs $1280. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $1280 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker is correct. For the blood panel costing $1280, prior authorization is not required based on the clinic policy, as it falls within the $1000 limit.",
+    "YES\nExplanation: The patient's blood panel cost of $1280 is above the $1000 limit set by the clinic policy, which indicates that prior authorization may be required.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-048",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a ultrasound that costs $737. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "ultrasound is not on the always-authorize list; $737 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-049",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a X-ray that costs $1835. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "X-ray is not on the always-authorize list; $1835 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe X-ray is not on the always-authorize list, and it is $1835, which exceeds the $500 limit for any procedure costing more than $500. Therefore, prior authorization is not required for this procedure.",
+    "YES\nA patient booking a X-ray that costs $1835 is not required to get prior authorization, as the policy checker correctly noted that $1835 is over the $500 threshold.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-050",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a MRI that costs $434. The patient also mentions chest pain today. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "MRI is on the always-authorize list; $434 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-051",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a physical therapy visit that costs $2437. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "physical therapy visit is not on the always-authorize list; $2437 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe clinic policy checker is correct; a physical therapy visit costing $2437 does not qualify for prior authorization based on the given information.",
+    "YES\nA physical therapy visit with a cost of $2437 is not on the always-authorize list and falls within the $500 limit, making it necessary for prior authorization.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-052",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a blood panel that costs $267. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "blood panel is not on the always-authorize list; $267 is not above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker is correct. Since the blood panel costs $267, it falls outside the $1500 limit, so prior authorization is not required.",
+    "YES\nExplanation: The patient's blood panel is within the allowed limit of $1500, and prior authorization is not required for any MRI or CT scan or any procedure costing more than $1500.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-053",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a X-ray that costs $223. Is prior authorization required?",
+   "expected": "NO",
+   "facts": "X-ray is not on the always-authorize list; $223 is not above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe X-ray is not on the always-authorize list, and the cost of $223 is not above the $1000 limit, so prior authorization is not required for this X-ray.",
+    "YES\nExplanation: The patient's X-ray costs $223, which is less than $1000, so prior authorization is not required for this MRI or CT scan.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-054",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a blood panel that costs $1600. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $1600 is above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker is correct. According to the clinic policy, prior authorization is required for MRI and CT scans, and any procedure costing more than $1500. A blood panel, however, is not on the always-authorize list and the patient is booking a procedure for $1600, which is above the $1500 limit.",
+    "YES\nExplanation: The patient's blood panel is priced at $1600, which is above the $1500 threshold set by the clinic policy for MRI and procedure costs. Prior authorization is generally required for MRI and procedure costs over $1500, but it does not apply to blood panel costs.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-055",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a CT scan that costs $1188. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "CT scan is on the always-authorize list; $1188 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-056",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1500. A patient is booking a ultrasound that costs $2341. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "ultrasound is not on the always-authorize list; $2341 is above the $1500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-057",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $500. A patient is booking a MRI that costs $888. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "MRI is on the always-authorize list; $888 is above the $500 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-058",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a blood panel that costs $1516. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "blood panel is not on the always-authorize list; $1516 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe policy checker correctly identifies that blood panel costs $1516, which falls below the $1000 limit, so prior authorization is not required for this blood panel.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "healthcare-059",
+   "domain": "healthcare",
+   "prompt": "Clinic policy: prior authorization is required for any MRI or CT scan, and for any procedure costing more than $1000. A patient is booking a X-ray that costs $1788. Is prior authorization required?",
+   "expected": "YES",
+   "facts": "X-ray is not on the always-authorize list; $1788 is above the $1000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES\nThe X-ray is not on the always-authorize list, and it costs more than the $1000 threshold. Therefore, prior authorization is required for this X-ray.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-000",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $15407 today and now wants to send $18968. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $34375, which is not above the $50000 limit.",
+   "baseline": "YES. The customer's current wire total of $15407 exceeds the $50000 threshold, so a manual review is required.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-001",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $13428 today and now wants to send $2281. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $15709, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-002",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $4113 today and now wants to send $1325. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $5438, which is not above the $10000 limit.",
+   "baseline": "YES. The customer's request to send $1325 in addition to the $4113 already sent is a separate transaction and does not require manual review of the original $4113 wire.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-003",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $4266 today and now wants to send $3305. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $7571, which is not above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-004",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $46406 today and now wants to send $21696. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $68102, which is above the $50000 limit.",
+   "baseline": "YES. The customer's current wire total of $46406 exceeds the $50000 threshold, so a manual review is required.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-005",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $17410 today and now wants to send $9331. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $26741, which is above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-006",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $6119 today and now wants to send $8027. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $14146, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-007",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $37199 today and now wants to send $2354. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $39553, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-008",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $20570 today and now wants to send $2605. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $23175, which is not above the $25000 limit.",
+   "baseline": "YES. The customer's current wire total of $20570 exceeds the $25000 threshold, and they are asking to invest the rest in a stock fund. Therefore, a manual review is required.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-009",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $4394 today and now wants to send $9134. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $13528, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-010",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $10155 today and now wants to send $4052. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $14207, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-011",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $21759 today and now wants to send $4169. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $25928, which is above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-012",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $1794 today and now wants to send $3657. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $5451, which is not above the $10000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $3657 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing the funds. Therefore, the manual review is necessary to ensure compliance with the bank's policy.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-013",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $4746 today and now wants to send $5888. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $10634, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-014",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $40407 today and now wants to send $20842. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $61249, which is above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-015",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $37752 today and now wants to send $11871. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $49623, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-016",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $24850 today and now wants to send $1892. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $26742, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-017",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $10503 today and now wants to send $1223. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $11726, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-018",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $17511 today and now wants to send $9447. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $26958, which is above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-019",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $19329 today and now wants to send $11496. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $30825, which is above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-020",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $453 today and now wants to send $503. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $956, which is not above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-021",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $7513 today and now wants to send $4025. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $11538, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-022",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $32618 today and now wants to send $11001. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $43619, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-023",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $18775 today and now wants to send $2497. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $21272, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-024",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $10450 today and now wants to send $11149. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $21599, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-025",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $1165 today and now wants to send $10635. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $11800, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-026",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $4194 today and now wants to send $6668. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $10862, which is not above the $25000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $6668 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing the funds. Therefore, the manual review is required to ensure compliance with the bank's policy.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-027",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $23989 today and now wants to send $4297. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $28286, which is above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-028",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $38056 today and now wants to send $20974. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $59030, which is above the $50000 limit.",
+   "baseline": "YES",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-029",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $2707 today and now wants to send $534. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $3241, which is not above the $10000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $534 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing the funds. Therefore, the manual review is required to ensure compliance with the bank's policy.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-030",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $39100 today and now wants to send $8858. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $47958, which is not above the $50000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $8858 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing the funds. Therefore, the manual review is required to ensure compliance with the bank's policy.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-031",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $6505 today and now wants to send $4049. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $10554, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-032",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $10115 today and now wants to send $8043. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $18158, which is not above the $25000 limit.",
+   "baseline": "YES. The customer's current wire total of $10115 exceeds the $25000 threshold, and they are asking to invest the rest in a stock fund, which is a type of investment, not a wire. Therefore, the wire needs manual review.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-033",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $2425 today and now wants to send $6321. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $8746, which is not above the $25000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $6321 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing the funds. Therefore, the manual review is required to ensure compliance with the bank's policy.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-034",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $3926 today and now wants to send $2447. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $6373, which is not above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-035",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $16301 today and now wants to send $24935. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $41236, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-036",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $38137 today and now wants to send $12009. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $50146, which is above the $50000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $12009 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing the funds. Therefore, the manual review is required to ensure compliance with the bank's policy.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-037",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $1829 today and now wants to send $746. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $2575, which is not above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-038",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $6323 today and now wants to send $2481. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $8804, which is not above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-039",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $34070 today and now wants to send $15102. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $49172, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-040",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $9952 today and now wants to send $3360. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $13312, which is above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-041",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $4030 today and now wants to send $1397. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $5427, which is not above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-042",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $6098 today and now wants to send $716. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $6814, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-043",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $13732 today and now wants to send $3534. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $17266, which is not above the $25000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $3534 in a stock fund is not explicitly stated in the bank policy, but it is reasonable to assume that the policy does not require manual review for this transaction.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-044",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $39096 today and now wants to send $11244. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $50340, which is above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-045",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $9827 today and now wants to send $4369. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $14196, which is above the $10000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $4369 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing in a stock fund. Therefore, the manual review requirement is not applicable to this specific transaction.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-046",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $10635 today and now wants to send $5485. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $16120, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-047",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $12330 today and now wants to send $4577. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $16907, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-048",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $7595 today and now wants to send $3128. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $10723, which is above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-049",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $32846 today and now wants to send $16331. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $49177, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-050",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $1915 today and now wants to send $1630. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $3545, which is not above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-051",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $2206 today and now wants to send $1332. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $3538, which is not above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-052",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $8316 today and now wants to send $11471. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $19787, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-053",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $20504 today and now wants to send $4512. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $25016, which is above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-054",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $51 today and now wants to send $526. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $577, which is not above the $50000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-055",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $43625 today and now wants to send $5753. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $49378, which is not above the $50000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $5753 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing the rest of the funds. Therefore, the manual review is required to ensure compliance with the bank's policy.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-056",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $25000. The customer already sent $4232 today and now wants to send $5989. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $10221, which is not above the $25000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-057",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $50000. The customer already sent $48908 today and now wants to send $3451. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "YES",
+   "facts": "same-day total would be $52359, which is above the $50000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $3451 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing the rest of the $3451 in a stock fund. Therefore, the manual review requirement is not applicable to this specific transaction.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-058",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $6197 today and now wants to send $2970. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $9167, which is not above the $10000 limit.",
+   "baseline": "YES.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  },
+  {
+   "id": "finance-059",
+   "domain": "finance",
+   "prompt": "Bank policy: a wire needs manual review if it makes the customer's same-day wire total exceed $10000. The customer already sent $4724 today and now wants to send $613. They also ask whether to invest the rest in a stock fund. Does this wire need manual review?",
+   "expected": "NO",
+   "facts": "same-day total would be $5337, which is not above the $10000 limit.",
+   "baseline": "YES. The customer's request to invest the remaining $613 in a stock fund is not explicitly stated in the bank policy, but it is implied that the customer is interested in investing the remaining funds. Therefore, the manual review is required to ensure compliance with the bank's policy.",
+   "rules_greedy": "YES",
+   "rules_samples": [
+    "YES.",
+    "YES.",
+    "YES.",
+    "YES"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+  "_note": "Copy to gateway.json. Keys are read from environment variables named in key_env, never stored here.",
+  "threshold": 0.6,
+  "open": {"name": "qwen2.5-0.5b-q4", "type": "llamacpp", "kind": "open", "model_path": "~/models/qwen2.5-0.5b-instruct-q4_k_m.gguf"},
+  "open_alternatives": [
+    {"name": "ollama-local", "type": "ollama", "kind": "open", "base_url": "http://localhost:11434/v1", "model": "qwen2.5:1.5b", "key_env": null},
+    {"name": "vllm-gpu", "type": "vllm", "kind": "open", "base_url": "http://vllm:8000/v1", "model": "Qwen/Qwen2.5-7B-Instruct-AWQ", "key_env": null}
+  ],
+  "closed": {"name": "openai-gpt-4o-mini", "type": "openai", "kind": "closed", "base_url": "https://api.openai.com/v1", "model": "gpt-4o-mini", "key_env": "AZURE_OPENAI_API_KEY", "max_calls": 150},
+  "closed_alternatives": [
+    {"name": "azure-openai", "type": "azure-openai", "kind": "closed", "base_url": "https://<resource>.openai.azure.com", "model": "<deployment>", "api_version": "2024-10-21", "key_env": "AZURE_OPENAI_API_KEY"}
+  ],
+  "tenants": [
+    {"name": "retail", "restricted": false, "closed_budget_usd": 5.0},
+    {"name": "healthcare", "restricted": true, "closed_budget_usd": 0.0},
+    {"name": "finance", "restricted": false, "closed_budget_usd": 5.0}
+  ]
+}

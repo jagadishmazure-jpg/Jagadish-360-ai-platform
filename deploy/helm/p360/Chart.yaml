@@ -1,0 +1,6 @@
+apiVersion: v2
+name: p360
+description: 360 AI platform - model gateway plus optional self-hosted open-model server (vLLM on GPU or Ollama on CPU)
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

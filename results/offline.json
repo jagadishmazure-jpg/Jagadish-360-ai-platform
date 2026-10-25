@@ -1,0 +1,78 @@
+{
+ "label": "deterministic offline run (stub models, SYNTHETIC data)",
+ "ml": {
+  "auc": 0.7945,
+  "accuracy": 0.7533,
+  "majority_baseline": 0.63,
+  "n_test": 300,
+  "data": "synthetic"
+ },
+ "dl": {
+  "mlp_accuracy": 0.946,
+  "linear_accuracy": 0.64,
+  "n_test": 500,
+  "data": "synthetic"
+ },
+ "agent": {
+  "low_value": "refunded",
+  "high_value": "waiting for human approval"
+ },
+ "injection_blocked": "prompt_injection",
+ "audit_chain_ok": true,
+ "breakeven_sweep": [
+  {
+   "monthly_tokens_m": 50,
+   "servers": 1,
+   "local_usd_per_mtok": 8.4344,
+   "small_api_usd_month": 13.12,
+   "payback_vs_small_api": null,
+   "premium_api_usd_month": 218.75,
+   "payback_vs_premium_api": null
+  },
+  {
+   "monthly_tokens_m": 100,
+   "servers": 1,
+   "local_usd_per_mtok": 4.2172,
+   "small_api_usd_month": 26.25,
+   "payback_vs_small_api": null,
+   "premium_api_usd_month": 437.5,
+   "payback_vs_premium_api": 34
+  },
+  {
+   "monthly_tokens_m": 200,
+   "servers": 1,
+   "local_usd_per_mtok": 2.1086,
+   "small_api_usd_month": 52.5,
+   "payback_vs_small_api": null,
+   "premium_api_usd_month": 875.0,
+   "payback_vs_premium_api": 13
+  },
+  {
+   "monthly_tokens_m": 500,
+   "servers": 1,
+   "local_usd_per_mtok": 0.8434,
+   "small_api_usd_month": 131.25,
+   "payback_vs_small_api": null,
+   "premium_api_usd_month": 2187.5,
+   "payback_vs_premium_api": 5
+  },
+  {
+   "monthly_tokens_m": 1000,
+   "servers": 2,
+   "local_usd_per_mtok": 0.8434,
+   "small_api_usd_month": 262.5,
+   "payback_vs_small_api": null,
+   "premium_api_usd_month": 4375.0,
+   "payback_vs_premium_api": 5
+  },
+  {
+   "monthly_tokens_m": 2000,
+   "servers": 4,
+   "local_usd_per_mtok": 0.8434,
+   "small_api_usd_month": 525.0,
+   "payback_vs_small_api": null,
+   "premium_api_usd_month": 8750.0,
+   "payback_vs_premium_api": 5
+  }
+ ]
+}

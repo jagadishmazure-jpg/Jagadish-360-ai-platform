@@ -1,0 +1,4 @@
+# CPU-only box (what this repo actually ran on): Ollama with a small quantized model.
+target: onprem
+gateway: { replicas: 1, closedKeySecret: "" }
+inference: { engine: ollama }

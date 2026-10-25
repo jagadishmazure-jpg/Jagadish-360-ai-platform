@@ -1,0 +1,64 @@
+{
+ "label": "MEASURED on CPU: two real open models; closed provider wired but not run (no API quota)",
+ "small": "qwen2.5-0.5b-instruct-q4_k_m.gguf",
+ "large": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+ "test_tasks": 50,
+ "train_tasks": 50,
+ "all_small": {
+  "accuracy": 0.5,
+  "cpu_seconds": 7.47
+ },
+ "all_large": {
+  "accuracy": 0.72,
+  "cpu_seconds": 46.57
+ },
+ "oracle": {
+  "accuracy": 0.72
+ },
+ "router_weights": [
+  0.718,
+  -1.832,
+  0.0,
+  0.459,
+  0.0,
+  0.0
+ ],
+ "sweep": [
+  {
+   "threshold": 0.3,
+   "share_small": 0.96,
+   "accuracy": 0.5,
+   "cpu_seconds": 8.79
+  },
+  {
+   "threshold": 0.4,
+   "share_small": 0.4,
+   "accuracy": 0.54,
+   "cpu_seconds": 42.88
+  },
+  {
+   "threshold": 0.5,
+   "share_small": 0.4,
+   "accuracy": 0.54,
+   "cpu_seconds": 42.88
+  },
+  {
+   "threshold": 0.6,
+   "share_small": 0.34,
+   "accuracy": 0.58,
+   "cpu_seconds": 43.8
+  },
+  {
+   "threshold": 0.7,
+   "share_small": 0.0,
+   "accuracy": 0.72,
+   "cpu_seconds": 46.57
+  },
+  {
+   "threshold": 0.8,
+   "share_small": 0.0,
+   "accuracy": 0.72,
+   "cpu_seconds": 46.57
+  }
+ ]
+}

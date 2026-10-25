@@ -1,0 +1,51 @@
+{{- if ne .Values.inference.engine "none" }}
+{{- $e := .Values.inference.engine }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}-{{ $e }}
+  labels: {{- include "p360.labels" . | nindent 4 }}
+spec:
+  serviceName: {{ $e }}
+  replicas: 1
+  selector:
+    matchLabels: { app: {{ .Release.Name }}-{{ $e }} }
+  template:
+    metadata:
+      labels: { app: {{ .Release.Name }}-{{ $e }} }
+    spec:
+      automountServiceAccountToken: false
+      {{- if eq $e "vllm" }}
+      nodeSelector: {{- toYaml .Values.inference.vllm.nodeSelector | nindent 8 }}
+      tolerations: {{- toYaml .Values.inference.vllm.tolerations | nindent 8 }}
+      containers:
+        - name: vllm
+          image: {{ .Values.inference.vllm.image }}
+          args: {{- toYaml (concat (list "--model" .Values.inference.vllm.model) .Values.inference.vllm.args) | nindent 12 }}
+          ports: [{ containerPort: 8000 }]
+          resources:
+            limits: { nvidia.com/gpu: {{ .Values.inference.vllm.gpus }} }
+          volumeMounts: [{ name: models, mountPath: /root/.cache/huggingface }]
+      {{- else }}
+      containers:
+        - name: ollama
+          image: {{ .Values.inference.ollama.image }}
+          ports: [{ containerPort: 11434 }]
+          resources: {{- toYaml .Values.inference.ollama.resources | nindent 12 }}
+          volumeMounts: [{ name: models, mountPath: /root/.ollama }]
+      {{- end }}
+  volumeClaimTemplates:
+    - metadata: { name: models }
+      spec:
+        accessModes: [ReadWriteOnce]
+        resources: { requests: { storage: {{ .Values.inference.storage }} } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $e }}
+  labels: {{- include "p360.labels" . | nindent 4 }}
+spec:
+  selector: { app: {{ .Release.Name }}-{{ $e }} }
+  ports: [{ port: {{ if eq $e "vllm" }}8000{{ else }}11434{{ end }} }]
+{{- end }}

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "p360"
+version = "0.1.0"
+description = "One governed platform for agents, GenAI/RAG, ML, DL and analytics: model gateway across closed and open models, self-hosted CPU/GPU inference, run-anywhere deploys, break-even math and an expert feedback loop."
+requires-python = ">=3.12"
+license = { text = "MIT" }
+readme = "README.md"
+dependencies = ["numpy>=2.0"]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2", "ruff==0.14.1"]
+local = ["llama-cpp-python==0.3.36"]
+board = ["matplotlib==3.9.2"]
+
+[project.scripts]
+p360 = "p360.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 200
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S"]
+ignore = ["S101", "S105", "S106", "S311", "S608", "E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S"]
+"scripts/*" = ["S603", "S607"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

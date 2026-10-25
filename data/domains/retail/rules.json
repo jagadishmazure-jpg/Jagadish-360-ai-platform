@@ -1,0 +1,56 @@
+{
+ "domain": "retail",
+ "expert": "SIMULATED expert: returns-desk lead at a fictional home-goods chain (Tallowmere Home)",
+ "policy": "Returns: unopened items only, within {window} days of purchase, and a receipt is required.",
+ "rules": [
+  {
+   "id": "RET-1",
+   "kind": "must_not",
+   "pattern": "card number|cvv|security code",
+   "reason": "Never ask for or repeat payment card details in chat.",
+   "instruction": "Never ask for card numbers or security codes."
+  },
+  {
+   "id": "RET-2",
+   "kind": "must_not",
+   "pattern": "guarantee(d)? (a |your )?refund|refund is guaranteed",
+   "reason": "Staff cannot guarantee refunds; the policy decides.",
+   "instruction": "Do not guarantee a refund."
+  },
+  {
+   "id": "RET-3",
+   "kind": "must_include",
+   "when": "no receipt",
+   "pattern": "receipt",
+   "reason": "If the receipt is missing, say a receipt is needed.",
+   "instruction": "If there is no receipt, say that a receipt is required.",
+   "append": "A receipt is required for any return."
+  }
+ ],
+ "edge_cases": [
+  {
+   "text": "Please send me your full card number so I can refund it.",
+   "violates": [
+    "RET-1"
+   ]
+  },
+  {
+   "text": "YES. Your refund is guaranteed.",
+   "violates": [
+    "RET-2"
+   ]
+  },
+  {
+   "prompt": "Customer has no receipt.",
+   "text": "NO. You are outside the window.",
+   "violates": [
+    "RET-3"
+   ]
+  },
+  {
+   "prompt": "Customer has no receipt.",
+   "text": "NO. A receipt is required for returns.",
+   "violates": []
+  }
+ ]
+}

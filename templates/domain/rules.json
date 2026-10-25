@@ -1,0 +1,13 @@
+{
+  "domain": "<new-domain>",
+  "expert": "<role of the domain expert who owns these rules>",
+  "policy": "<the written policy the agent must apply, in one or two sentences>",
+  "rules": [
+    {"id": "XX-1", "kind": "must_not", "pattern": "<regex of something that must never appear>", "reason": "<why, in the expert's words>", "instruction": "<plain instruction added to the prompt>"},
+    {"id": "XX-2", "kind": "must_include", "when": "<trigger phrase in the request>", "pattern": "<regex that must appear>", "reason": "<why>", "instruction": "<instruction>"}
+  ],
+  "edge_cases": [
+    {"text": "<an answer that breaks XX-1>", "violates": ["XX-1"]},
+    {"prompt": "<request containing the trigger>", "text": "<a compliant answer>", "violates": []}
+  ]
+}

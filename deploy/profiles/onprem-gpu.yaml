@@ -1,0 +1,6 @@
+# Single small on-prem server with one NVIDIA GPU (the break-even profile). No closed model: data never leaves.
+target: onprem
+gateway: { replicas: 1, closedKeySecret: "" }
+inference:
+  engine: vllm
+  vllm: { nodeSelector: {}, tolerations: [] }

@@ -1,0 +1,8 @@
+# GKE: GPU node pool, secrets from the cloud secret manager via External Secrets.
+target: gcp
+gateway: { closedKeySecret: p360-closed-model }
+inference:
+  engine: vllm
+  vllm:
+    nodeSelector: { cloud.google.com/gke-accelerator: nvidia-l4 }
+    tolerations: [{ key: nvidia.com/gpu, operator: Exists, effect: NoSchedule }]

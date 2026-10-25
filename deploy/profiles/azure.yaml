@@ -1,0 +1,8 @@
+# AKS: GPU node pool (one 24 GB GPU VM size), secrets from secret store via the CSI driver, closed model = Azure OpenAI.
+target: azure
+gateway: { closedKeySecret: p360-closed-model }
+inference:
+  engine: vllm
+  vllm:
+    nodeSelector: { agentpool: gpu }
+    tolerations: [{ key: sku, operator: Equal, value: gpu, effect: NoSchedule }]

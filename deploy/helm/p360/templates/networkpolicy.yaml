@@ -1,0 +1,15 @@
+{{- if .Values.networkPolicy.enabled }}
+# Only the gateway may talk to the model server; the model server has no egress except DNS
+# (weights are pre-pulled to the volume in air-gapped installs).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ .Release.Name }}-inference-ingress
+spec:
+  podSelector:
+    matchLabels: { app: {{ .Release.Name }}-{{ .Values.inference.engine }} }
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - podSelector: { matchLabels: { app: {{ .Release.Name }}-gateway } }
+{{- end }}

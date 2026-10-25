@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-gateway
+  labels: {{- include "p360.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.gateway.replicas }}
+  selector:
+    matchLabels: { app: {{ .Release.Name }}-gateway }
+  template:
+    metadata:
+      labels: { app: {{ .Release.Name }}-gateway }
+    spec:
+      automountServiceAccountToken: false
+      securityContext: { runAsNonRoot: true, runAsUser: 10001, seccompProfile: { type: RuntimeDefault } }
+      containers:
+        - name: gateway
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports: [{ containerPort: {{ .Values.gateway.port }} }]
+          env:
+            - name: P360_GATEWAY_TOKEN
+              valueFrom: { secretKeyRef: { name: {{ .Values.gateway.tokenSecret }}, key: token } }
+            {{- if .Values.gateway.closedKeySecret }}
+            - name: AZURE_OPENAI_API_KEY
+              valueFrom: { secretKeyRef: { name: {{ .Values.gateway.closedKeySecret }}, key: AZURE_OPENAI_API_KEY } }
+            {{- end }}
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: ["ALL"] } }
+          readinessProbe: { httpGet: { path: /healthz, port: {{ .Values.gateway.port }} } }
+          livenessProbe: { httpGet: { path: /healthz, port: {{ .Values.gateway.port }} } }
+          resources: {{- toYaml .Values.gateway.resources | nindent 12 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-gateway
+  labels: {{- include "p360.labels" . | nindent 4 }}
+spec:
+  selector: { app: {{ .Release.Name }}-gateway }
+  ports: [{ port: 80, targetPort: {{ .Values.gateway.port }} }]

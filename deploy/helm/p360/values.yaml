@@ -1,0 +1,32 @@
+# Defaults are the on-prem CPU profile. Cloud profiles in deploy/profiles override these.
+target: onprem
+image:
+  repository: ghcr.io/jagadishmazure-jpg/p360-gateway
+  tag: "0.1.0"   # pin a digest in production
+  pullPolicy: IfNotPresent
+gateway:
+  replicas: 2
+  port: 8360
+  tokenSecret: p360-gateway-token   # Secret with key "token"; synced from the cloud key store
+  closedKeySecret: ""               # Secret with key "AZURE_OPENAI_API_KEY"; empty = closed models off
+  resources:
+    requests: { cpu: 250m, memory: 256Mi }
+    limits: { cpu: "1", memory: 512Mi }
+inference:
+  engine: ollama          # ollama (CPU) | vllm (NVIDIA GPU) | none
+  ollama:
+    image: ollama/ollama:0.12.6
+    model: qwen2.5:1.5b
+    resources:
+      requests: { cpu: "2", memory: 4Gi }
+      limits: { cpu: "4", memory: 8Gi }
+  vllm:
+    image: vllm/vllm-openai:v0.11.0
+    model: Qwen/Qwen2.5-7B-Instruct-AWQ
+    args: ["--quantization", "awq", "--max-model-len", "8192", "--gpu-memory-utilization", "0.90"]
+    gpus: 1
+    nodeSelector: {}
+    tolerations: []
+  storage: 30Gi
+networkPolicy:
+  enabled: true
